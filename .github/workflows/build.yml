@@ -50,4 +50,5 @@ jobs:
         run: |
           echo "OS_ARCH=`uname -m`" >> $GITHUB_ENV
           sudo apt -y install build-essential openssl libssl-dev pkg-config liblz4-tool
+      - uses: actions/checkout@v3
       - run: ./Makefile.sh ${{ matrix.variant }}
