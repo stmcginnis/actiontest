@@ -19,6 +19,7 @@ jobs:
   list-variants:
     # This needs to be its own job since the build job needs its output before
     # it can initialize
+    name: "Determine variants"
     runs-on: ubuntu-latest
     outputs:
       variants: ${{ steps.get-variants.outputs.variants }}
