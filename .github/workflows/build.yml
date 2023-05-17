@@ -39,6 +39,7 @@ jobs:
         arch: [x86_64, aarch64]
         exclude: ${{ fromJson(needs.list-variants.outputs.aarch-enemies) }}
       fail-fast: false
+    name: ${{ matrix.variant }}-${{ matrix.arch }}
     steps:
       - uses: actions/checkout@v3
       - run: ./Makefile.sh ${{ matrix.variant }}
