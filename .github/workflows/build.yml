@@ -17,12 +17,13 @@ env:
 
 jobs:
   list-variants:
+    # This needs to be its own job since the build job needs its output before
+    # it can initialize
     runs-on: ubuntu-latest
     outputs:
       variants: ${{ steps.get-variants.outputs.variants }}
       aarch-enemies: ${{ steps.get-variants.outputs.aarch-enemies }}
     steps:
-      - uses: actions/checkout@v3
       - uses: ./.github/actions/list-variants
         id: get-variants
 
