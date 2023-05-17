@@ -1,15 +1,19 @@
 name: "List active variants"
 description: "Dynamically determines current Bottlerocket variants based on repo contents."
 outputs:
-  variants: ${{ steps.get-variants.outputs.variants }}
-  aarch-enemies: ${{ steps.get-variants.outputs.aarch-enemies }}
+  variants:
+    description: A list of all variants defined in the repo
+    value: ${{ steps.get-variants.outputs.variants }}
+  aarch-enemies:
+    description: Variants that should not run for aarch64
+    value: ${{ steps.get-variants.outputs.aarch-enemies }}
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v3
     - id: get-variants
-      shell: bash
       name: Determine variants
+      shell: bash
       run: |
         cd variants
         output="variants=$(ls -d */ | cut -d'/' -f 1 | grep -vE '^(shared|target)$' | jq -R -s -c 'split("\n")[:-1]')"
