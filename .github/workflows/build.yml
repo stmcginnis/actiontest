@@ -17,23 +17,13 @@ env:
 
 jobs:
   list-variants:
-    if: github.repository == 'stmcginnis/actiontest'
     runs-on: ubuntu-latest
     outputs:
       variants: ${{ steps.get-variants.outputs.variants }}
       aarch-enemies: ${{ steps.get-variants.outputs.aarch-enemies }}
     steps:
-      - uses: actions/checkout@v3
-      - id: get-variants
-        name: Determine variants
-        run: |
-          cd variants
-          output="variants=$(ls -d */ | cut -d'/' -f 1 | grep -vE '^(shared|target)$' | jq -R -s -c 'split("\n")[:-1]')"
-          echo $output
-          echo $output >> $GITHUB_OUTPUT
-          output="aarch-enemies=$(ls -d */ | cut -d'/' -f 1 | grep -E '(^(metal|vmware)|\-dev$)' | jq -R -s -c 'split("\n")[:-1] | [ .[] | {"variant": ., "arch": "aarch64"}]')"
-          echo $output
-          echo $output >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/list-variants
 
   build:
     needs: list-variants
@@ -46,9 +36,5 @@ jobs:
         exclude: ${{ fromJson(needs.list-variants.outputs.aarch-enemies) }}
       fail-fast: false
     steps:
-      - name: Preflight step to set up the runner
-        run: |
-          echo "OS_ARCH=`uname -m`" >> $GITHUB_ENV
-          sudo apt -y install build-essential openssl libssl-dev pkg-config liblz4-tool
       - uses: actions/checkout@v3
       - run: ./Makefile.sh ${{ matrix.variant }}

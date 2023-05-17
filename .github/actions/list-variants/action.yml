@@ -3,15 +3,18 @@ description: "Dynamically determines current Bottlerocket variants based on repo
 outputs:
   variants: ${{ steps.get-variants.outputs.variants }}
   aarch-enemies: ${{ steps.get-variants.outputs.aarch-enemies }}
-steps:
-  - uses: actions/checkout@v3
-  - id: get-variants
-    name: Determine variants
-    run: |
-      cd variants
-      output="variants=$(ls -d */ | cut -d'/' -f 1 | grep -vE '^(shared|target)$' | jq -R -s -c 'split("\n")[:-1]')"
-      echo $output
-      echo $output >> $GITHUB_OUTPUT
-      output="aarch-enemies=$(ls -d */ | cut -d'/' -f 1 | grep -E '(^(metal|vmware)|\-dev$)' | jq -R -s -c 'split("\n")[:-1] | [ .[] | {"variant": ., "arch": "aarch64"}]')"
-      echo $output
-      echo $output >> $GITHUB_OUTPUT
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - id: get-variants
+      shell: bash
+      name: Determine variants
+      run: |
+        cd variants
+        output="variants=$(ls -d */ | cut -d'/' -f 1 | grep -vE '^(shared|target)$' | jq -R -s -c 'split("\n")[:-1]')"
+        echo $output
+        echo $output >> $GITHUB_OUTPUT
+        output="aarch-enemies=$(ls -d */ | cut -d'/' -f 1 | grep -E '(^(metal|vmware)|\-dev$)' | jq -R -s -c 'split("\n")[:-1] | [ .[] | {"variant": ., "arch": "aarch64"}]')"
+        echo $output
+        echo $output >> $GITHUB_OUTPUT
