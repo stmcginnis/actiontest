@@ -1,0 +1,21 @@
+[package]
+name = "libselinux"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/SELinuxProject/selinux/releases/"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/SELinuxProject/selinux/releases/download/3.5/libselinux-3.5.tar.gz"
+sha512 = "4e13261a5821018a5f3cdce676f180bb62e5bc225981ca8a498ece0d1c88d9ba8eaa0ce4099dd0849309a8a7c5a9a0953df841a9922f2c284e5a109e5d937ba7"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libpcre = { path = "../libpcre" }
+libsepol = { path = "../libsepol" }

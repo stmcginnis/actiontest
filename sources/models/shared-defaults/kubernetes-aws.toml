@@ -1,0 +1,35 @@
+[settings.kubernetes]
+cluster-domain = "cluster.local"
+standalone-mode = false
+authentication-mode = "aws"
+server-tls-bootstrap = true
+cloud-provider = "aws"
+
+[metadata.settings.kubernetes]
+max-pods.setting-generator = "pluto max-pods"
+cluster-dns-ip.setting-generator = "pluto cluster-dns-ip"
+node-ip.setting-generator = "pluto node-ip"
+provider-id.setting-generator = "pluto provider-id"
+affected-services = ["kubernetes"]
+
+[metadata.settings.kubernetes.pod-infra-container-image]
+setting-generator = "schnauzer settings.kubernetes.pod-infra-container-image"
+template = "{{ pause-prefix settings.aws.region }}/eks/pause:3.1-eksbuild.1"
+affected-services = ["kubernetes", "containerd"]
+
+[settings.metrics]
+service-checks = ["apiserver", "chronyd", "containerd", "host-containerd", "kubelet"]
+
+[metadata.settings.network]
+affected-services = ["containerd", "kubernetes", "host-containerd", "host-containers"]
+
+[services.autoscaling-warm-pool]
+configuration-files = ["warm-pool-wait-toml"]
+restart-commands = []
+
+[configuration-files.warm-pool-wait-toml]
+path = "/etc/warm-pool-wait.toml"
+template-path = "/usr/share/templates/warm-pool-wait-toml"
+
+[metadata.settings.autoscaling]
+affected-services = ["autoscaling-warm-pool"]

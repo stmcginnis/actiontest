@@ -1,0 +1,19 @@
+[package]
+name = "libzstd"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/facebook/zstd/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/facebook/zstd/releases/download/v1.5.5/zstd-1.5.5.tar.gz"
+sha512 = "99109ec0e07fa65c2101c9cb36be56b672bbd0ee69d265f924718e61f9192ae8385c8d9e4d0c318be9edfa6d849fd3d60e5f164fa120961449429ea3c5dab6b6"
+
+[build-dependencies]
+glibc = { path = "../glibc" }

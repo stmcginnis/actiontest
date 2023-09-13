@@ -1,0 +1,22 @@
+[package]
+name = "dbus-broker"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/bus1/dbus-broker/releases/"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/bus1/dbus-broker/releases/download/v33/dbus-broker-33.tar.xz"
+sha512 = "776684a5d19a6c25fc46dff19821014a32d967f8132385b86c5281f2d69192dce64b3ad92ae6a158d1d64753e89d918385a1a31f32811f54060504113f065baa"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libexpat = { path = "../libexpat" }
+libselinux = { path = "../libselinux" }
+systemd = { path = "../systemd" }

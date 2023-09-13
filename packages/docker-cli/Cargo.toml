@@ -1,0 +1,19 @@
+[package]
+name = "docker-cli"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/docker/cli/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/docker/cli/archive/v20.10.21/cli-20.10.21.tar.gz"
+sha512 = "951100d75c833e1c844203fe86d73d25c3164eba4fce87cc05a0ac3691851fc5341c3b32ce3814dd61bd3700d8e8e1d045a7a5651c6dc5ddc0a39c58db9bd7b3"
+
+[build-dependencies]
+glibc = { path = "../glibc" }

@@ -1,0 +1,182 @@
+[clarify.actix-macros]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x31de3fcd },
+    { path = "LICENSE-MIT", hash = 0xfeb1e4a7 },
+]
+
+[clarify.actix-codec]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x31de3fcd },
+    { path = "LICENSE-MIT", hash = 0xfeb1e4a7 },
+]
+
+[clarify.actix-http]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x31de3fcd },
+    { path = "LICENSE-MIT", hash = 0xfeb1e4a7 },
+]
+
+[clarify.backtrace-sys]
+# backtrace-sys is MIT/Apache-2.0, libbacktrace is BSD-3-Clause
+expression = "(MIT OR Apache-2.0) AND BSD-3-Clause"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x24b54f4b },
+    { path = "LICENSE-MIT", hash = 0x9374b940 },
+    { path = "src/libbacktrace/LICENSE", hash = 0x0ce09262 },
+]
+
+[clarify.bstr]
+expression = "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
+license-files = [
+    { path = "COPYING", hash = 0x28398560 },
+    { path = "LICENSE-APACHE", hash = 0x24b54f4b },
+    { path = "LICENSE-MIT", hash = 0x462dee44 },
+    { path = "src/unicode/data/LICENSE-UNICODE", hash = 0x70f7339 },
+]
+
+[clarify.cached]
+expression = "MIT"
+license-files = [
+    { path = "COPYRIGHT", hash = 0xaf811590 },
+    { path = "LICENSE", hash = 0x77e163f0 },
+]
+
+[clarify.crossbeam-queue]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x24b54f4b },
+    { path = "LICENSE-MIT", hash = 0x386ca1bc },
+    { path = "LICENSE-THIRD-PARTY", hash = 0x7e40bc60 },
+]
+
+[clarify.crossbeam-channel]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x24b54f4b },
+    { path = "LICENSE-MIT", hash = 0xbc436f08 },
+    { path = "LICENSE-THIRD-PARTY", hash = 0x847bf39 },
+]
+
+# https://github.com/hsivonen/encoding_rs The non-test code that isn't generated from the WHATWG data in this crate is
+# under Apache-2.0 OR MIT. Test code is under CC0.
+[clarify.encoding_rs]
+expression = "(Apache-2.0 OR MIT) AND BSD-3-Clause"
+license-files = [
+    { path = "COPYRIGHT", hash = 0x39f8ad31 },
+    { path = "LICENSE-APACHE", hash = 0x18785531 },
+    { path = "LICENSE-MIT", hash = 0xafaec4cb },
+    { path = "LICENSE-WHATWG", hash = 0xbcb87a0c },
+    { path = "COPYRIGHT", hash = 0x39f8ad31 },
+]
+
+[clarify.lz4-sys]
+# The lz4-sys crate's license is listed as MIT.
+#
+# lz4-sys compiles four files from liblz4 as a static library:
+# - lib/lz4.c
+# - lib/lz4frame.c
+# - lib/lz4hc.c
+# - lib/xxhash.c
+#
+# liblz4's LICENSE file states:
+# > This repository uses 2 different licenses :
+# > - all files in the `lib` directory use a BSD 2-Clause license
+# > - all other files use a GPLv2 license, unless explicitly stated otherwise
+expression = "MIT AND BSD-2-Clause"
+license-files = [
+    { path = "liblz4/lib/LICENSE", hash = 0xe411c460 },
+]
+skip-files = [
+    "liblz4/LICENSE", # top-level explainer file
+    "liblz4/contrib/djgpp/LICENSE",
+    "liblz4/examples/COPYING",
+    "liblz4/programs/COPYING",
+    "liblz4/tests/COPYING",
+]
+
+[clarify.minimal-lexical]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE.md", hash = 0xfe66d806 },
+    { path = "LICENSE-APACHE", hash = 0x4fccb6b7 },
+    { path = "LICENSE-MIT", hash = 0x386ca1bc },
+]
+
+[clarify.pulldown-cmark]
+expression = "MIT"
+license-files = [
+    { path = "LICENSE", hash = 0x4cb272b3 },
+]
+skip-files = [
+    "third_party/CommonMark/LICENSE", # only contains the commonmark specification
+]
+
+[clarify.regex]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x24b54f4b },
+    { path = "LICENSE-MIT", hash = 0xb755395b },
+]
+skip-files = [
+    "src/testdata/LICENSE", # we aren't using the test data
+]
+
+[clarify.regex-automata]
+expression = "Unlicense OR MIT"
+license-files = [
+    { path = "COPYING", hash = 0x969f37d8 },
+    { path = "LICENSE-MIT", hash = 0x616d8a83 },
+    { path = "UNLICENSE", hash = 0x87b84020 },
+]
+skip-files = [
+    "data/fowler-tests/LICENSE", # we aren't using the test data
+    "data/tests/fowler/LICENSE",
+]
+
+[clarify.regex-syntax]
+expression = "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0x24b54f4b },
+    { path = "LICENSE-MIT", hash = 0xb755395b },
+    { path = "src/unicode_tables/LICENSE-UNICODE", hash = 0xa7f28b93 },
+]
+
+[clarify.ring]
+expression = "MIT AND ISC AND OpenSSL"
+license-files = [
+    { path = "LICENSE", hash = 0xbd0eed23 },
+    { path = "third_party/fiat/LICENSE", hash = 0xdad0527d },
+]
+
+[clarify.tokio-macros]
+expression = "MIT"
+license-files = [
+    { path = "LICENSE", hash = 0xfa2cf349 },
+]
+
+[clarify.unicode-ident]
+expression = "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
+license-files = [
+    { path = "LICENSE-APACHE", hash = 0xb5518783 },
+    { path = "LICENSE-MIT", hash = 0x386ca1bc },
+    { path = "LICENSE-UNICODE", hash = 0x9698cbbe },
+]
+
+[clarify.vmw_backdoor]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "COPYRIGHT", hash = 0x3fd7d639 },
+    { path = "LICENSE-APACHE-2.0", hash = 0x18785531 },
+    { path = "LICENSE-MIT", hash = 0x28392cf3 },
+]
+
+[clarify.typenum]
+expression = "MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE", hash = 0xa4618a29 },
+    { path = "LICENSE-MIT", hash = 0xb9f15462 },
+    { path = "LICENSE-APACHE", hash = 0x91d5a0a7 },
+]

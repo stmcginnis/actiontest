@@ -1,0 +1,20 @@
+[package]
+name = "nvidia-k8s-device-plugin"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/NVIDIA/k8s-device-plugin/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/NVIDIA/k8s-device-plugin/archive/v0.14.1/v0.14.1.tar.gz"
+path = "k8s-device-plugin-0.14.1.tar.gz"
+sha512 = "e00a3da18ae803669d566faf5b8e8c5fe57c36d85100255c0c7be42bcb9c40cb1f97afecea8cab8035f8e10182a8a63cf18e89c702d161ee8bbc16dddd760d19"
+
+[build-dependencies]
+glibc = { path = "../glibc" }

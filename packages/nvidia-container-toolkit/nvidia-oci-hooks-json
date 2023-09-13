@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "prestart": [
+      {
+        "path": "/usr/bin/nvidia-container-runtime-hook",
+        "args": ["nvidia-container-runtime-hook", "prestart"]
+      }
+    ],
+    "poststart": [
+    ]
+  }
+}

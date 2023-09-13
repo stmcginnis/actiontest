@@ -1,0 +1,17 @@
+[Unit]
+Description=Prepare Boot Directory (/boot)
+RefuseManualStart=true
+RefuseManualStop=true
+After=mark-successful-boot.service
+Requires=mark-successful-boot.service
+
+[Service]
+Type=oneshot
+# We need a helper program to mount the boot partition since it isn't
+# trivial to figure out which partition set is active
+ExecStart=/usr/bin/prairiedog prepare-boot
+RemainAfterExit=true
+StandardError=journal+console
+
+[Install]
+WantedBy=preconfigured.target

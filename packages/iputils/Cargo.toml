@@ -1,0 +1,21 @@
+[package]
+name = "iputils"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/iputils/iputils/releases"
+
+[[package.metadata.build-package.external-files]]
+path = "iputils-20221126.tar.gz"
+url = "https://github.com/iputils/iputils/archive/20221126.tar.gz"
+sha512 = "7fdfd76e6f2977039bc0930a1a5451f17319bf17beefc429751d99ffe143a83344d5b4cdbf008627bd70caafeadaf906a8b7c00393fa819e50d6c02b512c367f"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libcap = { path = "../libcap" }

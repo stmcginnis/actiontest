@@ -1,0 +1,24 @@
+[package]
+name = "libglib"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://download.gnome.org/sources/glib"
+
+[[package.metadata.build-package.external-files]]
+url = "https://download.gnome.org/sources/glib/2.77/glib-2.77.2.tar.xz"
+sha512 = "0e2cf5178a7174b174480a795b1cbb2f1dbbea35899b7e4756937e426b6c39c20deb8488958403b78552674c4179e6fd63ea7fac2b746ac49a62046e27086111"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libffi = { path = "../libffi" }
+libpcre = { path = "../libpcre" }
+libselinux = { path = "../libselinux" }
+libz = { path = "../libz" }
+util-linux = { path = "../util-linux" }

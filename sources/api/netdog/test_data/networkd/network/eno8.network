@@ -1,0 +1,11 @@
+[Match]
+Name=eno8
+[Link]
+RequiredForOnline=false
+[Network]
+DHCP=yes
+KeepConfiguration=dhcp
+[DHCPv4]
+UseMTU=true
+[IPv6AcceptRA]
+UseMTU=true

@@ -1,0 +1,19 @@
+[package]
+name = "libattr"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://download-mirror.savannah.gnu.org/releases/attr"
+
+[[package.metadata.build-package.external-files]]
+url = "https://download-mirror.savannah.gnu.org/releases/attr/attr-2.5.1.tar.xz"
+sha512 = "9e5555260189bb6ef2440c76700ebb813ff70582eb63d446823874977307d13dfa3a347dfae619f8866943dfa4b24ccf67dadd7e3ea2637239fdb219be5d2932"
+
+[build-dependencies]
+glibc = { path = "../glibc" }

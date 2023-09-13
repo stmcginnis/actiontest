@@ -1,0 +1,8 @@
+{
+  "hooks": {
+    "prestart": [
+    ],
+    "poststart": [
+    ]
+  }
+}

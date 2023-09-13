@@ -1,0 +1,21 @@
+[package]
+name = "runc"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/opencontainers/runc/releases/"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/opencontainers/runc/releases/download/v1.1.9/runc.tar.xz"
+path = "runc-v1.1.9.tar.xz"
+sha512 = "e6fd1e7414929436f996358389eeb968db1304358029f0b845eb7d4afac4fa0d637e06ab0e564d680b825e2edb97b55cc154f32e4912d56697bbaf0923c1ec0d"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libseccomp = { path = "../libseccomp" }

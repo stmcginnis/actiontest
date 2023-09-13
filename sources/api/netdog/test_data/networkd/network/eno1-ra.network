@@ -1,0 +1,12 @@
+[Match]
+Name=eno1
+[Link]
+RequiredForOnline=true
+[Network]
+DHCP=ipv4
+IPv6AcceptRA=true
+KeepConfiguration=dhcp
+[DHCPv4]
+UseMTU=true
+[DHCPv6]
+WithoutRA=solicit

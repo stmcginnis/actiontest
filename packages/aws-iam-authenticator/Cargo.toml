@@ -1,0 +1,20 @@
+[package]
+name = "aws-iam-authenticator"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/kubernetes-sigs/aws-iam-authenticator/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/kubernetes-sigs/aws-iam-authenticator/archive/v0.6.11/aws-iam-authenticator-0.6.11.tar.gz"
+sha512 = "6d78fbe95d6e36a7a3835b4df257e96fff3ab53fe4abd8ef525c24aebaf8727e2a6016107024bebe031b2e24295172190407ca892d1b3478329c62cdd9fe553f"
+bundle-modules = [ "go" ]
+
+[build-dependencies]
+glibc = { path = "../glibc" }

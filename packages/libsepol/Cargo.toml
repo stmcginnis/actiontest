@@ -1,0 +1,19 @@
+[package]
+name = "libsepol"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/SELinuxProject/selinux/releases/"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/SELinuxProject/selinux/releases/download/3.5/libsepol-3.5.tar.gz"
+sha512 = "66f45a9f4951589855961955db686b006b4c0cddead6ac49ad238a0e4a34775905bd10fb8cf0c0ff2ab64f9b7d8366b97fcd5b19c382dec39971a2835cc765c8"
+
+[build-dependencies]
+glibc = { path = "../glibc" }

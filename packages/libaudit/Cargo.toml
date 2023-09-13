@@ -1,0 +1,19 @@
+[package]
+name = "libaudit"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/linux-audit/audit-userspace/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/linux-audit/audit-userspace/archive/v3.1.2/audit-userspace-3.1.2.tar.gz"
+sha512 = "d5b05686aedd6eaaced000778580bd3e96e38c020534038d6b1ee6de96dd7687c2f3a52a2ae75be8b93c173b286a56dbc92231906c68fda79b113dfcaad6da84"
+
+[build-dependencies]
+glibc = { path = "../glibc" }

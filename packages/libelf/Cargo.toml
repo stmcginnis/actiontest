@@ -1,0 +1,20 @@
+[package]
+name = "libelf"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://sourceware.org/elfutils/ftp/"
+
+[[package.metadata.build-package.external-files]]
+url = "https://sourceware.org/elfutils/ftp/0.189/elfutils-0.189.tar.bz2"
+sha512 = "93a877e34db93e5498581d0ab2d702b08c0d87e4cafd9cec9d6636dfa85a168095c305c11583a5b0fb79374dd93bc8d0e9ce6016e6c172764bcea12861605b71"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libz = { path = "../libz" }

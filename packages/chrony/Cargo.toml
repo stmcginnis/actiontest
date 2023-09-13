@@ -1,0 +1,23 @@
+[package]
+name = "chrony"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://download.tuxfamily.org/chrony"
+
+[[package.metadata.build-package.external-files]]
+url = "https://download.tuxfamily.org/chrony/chrony-4.4.tar.gz"
+sha512 = "45e060eb0c5892552f28dc436429e5823409cc93533127af27b64d08ff9c769fdc72694272232114f5ca1884c2bc8b5e842fae7956dc457358e937bcd3dda4d7"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libcap = { path = "../libcap" }
+libseccomp = { path = "../libseccomp" }
+libncurses = { path = "../libncurses" }
+readline = { path = "../readline" }

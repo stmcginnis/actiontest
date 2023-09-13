@@ -1,0 +1,50 @@
+[package]
+name = "release"
+version = "0.0.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+# RPM BuildRequires
+[build-dependencies]
+# None
+
+# RPM Requires
+[dependencies]
+acpid = { path = "../acpid" }
+binutils = { path = "../binutils" }
+ca-certificates = { path = "../ca-certificates" }
+chrony = { path = "../chrony" }
+conntrack-tools = { path = "../conntrack-tools" }
+containerd = { path = "../containerd" }
+coreutils = { path = "../coreutils" }
+dbus-broker = { path = "../dbus-broker" }
+e2fsprogs = { path = "../e2fsprogs" }
+ethtool = { path = "../ethtool" }
+filesystem = { path = "../filesystem" }
+findutils = { path = "../findutils" }
+glibc = { path = "../glibc" }
+grep = { path = "../grep" }
+grub = { path = "../grub" }
+host-ctr = { path = "../host-ctr" }
+iproute = { path = "../iproute" }
+iptables = { path = "../iptables" }
+kexec-tools = { path = "../../packages/kexec-tools" }
+keyutils = { path = "../keyutils" }
+libaudit = { path = "../libaudit" }
+libgcc = { path = "../libgcc" }
+libstd-rust = { path = "../libstd-rust" }
+makedumpfile = { path = "../../packages/makedumpfile" }
+os = { path = "../os" }
+oci-add-hooks = { path = "../oci-add-hooks" }
+policycoreutils = { path = "../policycoreutils" }
+procps = { path = "../procps" }
+selinux-policy = { path = "../selinux-policy" }
+shim = { path = "../shim" }
+systemd = { path = "../systemd" }
+util-linux = { path = "../util-linux" }
+wicked = { path = "../wicked" }
+xfsprogs = { path = "../xfsprogs" }

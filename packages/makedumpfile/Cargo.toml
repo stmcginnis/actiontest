@@ -1,0 +1,22 @@
+[package]
+name = "makedumpfile"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/makedumpfile/makedumpfile/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/makedumpfile/makedumpfile/archive/1.7.3/makedumpfile-1.7.3.tar.gz"
+sha512 = "a8e2ef5fdb45e6ed57c8b63f242d989bf1a66746ff665aefb7a52fc5d6d73b71171a08de1dc080ab31130938e2caea414929a5b64be9ee7443cf646c35ce3822"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libelf = { path = "../libelf" }
+libz = { path = "../libz" }
+libbzip2 = { path = "../libbzip2" }

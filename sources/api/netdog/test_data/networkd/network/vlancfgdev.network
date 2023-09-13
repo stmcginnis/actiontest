@@ -1,0 +1,10 @@
+[Match]
+Name=vlancfgdev
+[Link]
+RequiredForOnline=true
+[Network]
+ConfigureWithoutCarrier=true
+DHCP=ipv4
+KeepConfiguration=dhcp
+[DHCPv4]
+UseMTU=true

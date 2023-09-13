@@ -1,0 +1,44 @@
+[package]
+name = "ecs-agent"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+# ECS agent
+[package.metadata.build-package]
+releases-url = "https://github.com/aws/amazon-ecs-agent/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/aws/amazon-ecs-agent/archive/v1.75.0/amazon-ecs-agent-1.75.0.tar.gz"
+sha512 = "25bbf1f24451bff8f2bac03a83bdee64186f07de466bdebafe1ff149995ca3c57320b13ced85843139369c4638367015600439aa317ee9875038436d0ec67e17"
+
+# The ECS agent repository includes two CNI plugins as git submodules.  git
+# archive does not include submodules, so the tarball above does not include
+# the source of those plugins.  Instead, we include the CNI plugin source
+# directly.
+# You can get the commit SHA for the submodules for a particular ecs-agent release here:
+# https://github.com/aws/amazon-ecs-agent/blob/ECS_AGENT_VERSION/agent/ecscni/plugin_test.go#L29-L34
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/aws/amazon-ecs-cni-plugins/archive/53a8481891251e66e35847554d52a13fc7c4fd03/amazon-ecs-cni-plugins.tar.gz"
+sha512 = "e819c1aae509d19461999bf717d126b3e918b73dc6049e415c4911be6cb11159404bb45bb6c92cdfa16b5b30bb174731e972e3f2be44fa0b51bbc7a969049ab7"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/aws/amazon-vpc-cni-plugins/archive/a83b66349768e020487a00e31767fc2e6fc88136/amazon-vpc-cni-plugins.tar.gz"
+sha512 = "ace0d27938b0c47a1208cbc0a30fa70f306270cc66a0b40bdd58d6d7060c69c361c3edcd4cc1d87bdb0f2be839cd6244541c485b3a294c265c5fdf740b012238"
+
+# RPM BuildRequires
+[build-dependencies]
+glibc = { path = "../glibc" }
+
+# RPM Requires
+[dependencies]
+# `docker-engine` is only needed at runtime, and is included in the variant
+# definition.
+# docker-engine = { path = "../docker-engine" }
+# `iptables` is only needed at runtime, and is pulled in by `release`.
+# iptables = { path = "../iptables" }
+amazon-ssm-agent = { path = "../amazon-ssm-agent" }
