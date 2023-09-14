@@ -28,7 +28,7 @@ func generateGPUInfoConfig() error {
 	defer nvml.Shutdown()
 	version, ret := nvml.SystemGetDriverVersion()
 	if ret != nvml.SUCCESS {
-		return fmt.Errorf("Failed to get version, got ret %v", ret)
+		return fmt.Errorf("Failed to get version, got ret %v!", ret)
 	}
 	gpuIDs, err := getGPUDeviceIDs()
 	if err != nil {
